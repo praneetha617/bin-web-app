@@ -47,7 +47,6 @@
       const password = form["password"].value;
       const confirmPassword = form["confirmPassword"].value;
 
-      // Basic validation for email or 10-digit phone
       const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
       const phoneRegex = /^\d{10}$/;
 
@@ -61,8 +60,9 @@
         return false;
       }
 
-      alert("Registration successful!");
-      return true;
+      alert("Registration successful! Redirecting to login page...");
+      window.location.href = "login.html"; // Redirect to login
+      return false; // Prevent actual form submission
     }
   </script>
 
