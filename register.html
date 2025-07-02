@@ -4,43 +4,45 @@
   <meta charset="UTF-8">
   <title>Register</title>
   <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      padding: 40px;
-    }
-    input {
-      margin: 10px;
-      padding: 10px;
-      width: 250px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: green;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+    body { font-family: Arial; text-align: center; padding: 40px; }
+    input { margin: 10px; padding: 10px; width: 250px; }
+    button { padding: 10px 20px; background-color: green; color: white; border: none; }
   </style>
+</head>
+<body>
+
+  <h2>Register</h2>
+
+  <form onsubmit="handleRegister(event)">
+    <input type="text" name="firstName" placeholder="First Name" required pattern="[A-Za-z\s]+" title="Only letters allowed"><br>
+    <input type="text" name="lastName" placeholder="Last Name" required pattern="[A-Za-z\s]+" title="Only letters allowed"><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}" title="Enter 10-digit phone number"><br>
+    <input type="password" name="password" placeholder="Password" required><br>
+    <input type="password" name="confirmPassword" placeholder="Confirm Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+
   <script>
     function handleRegister(event) {
       event.preventDefault();
-      // Add validation logic here (if needed)
-      alert("Registered successfully!");
-      window.location.href = "login.html";  // Redirect after registration
+
+      const firstName = document.querySelector('input[name="firstName"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+      const confirmPassword = document.querySelector('input[name="confirmPassword"]').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      localStorage.setItem("username", firstName);
+      localStorage.setItem("password", password);
+
+      alert("Registration successful!");
+      window.location.href = "login.html";
     }
   </script>
-</head>
-<body>
-  <h2>Register</h2>
-  <form onsubmit="handleRegister(event)">
-    <input type="text" placeholder="First Name" required pattern="[A-Za-z\s]+" title="Only letters allowed"><br>
-    <input type="text" placeholder="Last Name" required pattern="[A-Za-z\s]+" title="Only letters allowed"><br>
-    <input type="email" placeholder="Email" required><br>
-    <input type="tel" placeholder="Phone Number" required pattern="[0-9]{10}" title="Enter 10-digit phone number"><br>
-    <input type="password" placeholder="Password" required><br>
-    <input type="password" placeholder="Confirm Password" required><br>
-    <button type="submit">Register</button>
-  </form>
+
 </body>
 </html>
