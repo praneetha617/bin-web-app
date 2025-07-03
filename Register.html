@@ -23,6 +23,9 @@
     <button type="submit">Register</button>
   </form>
 
+<p>Already have an account? <a href="Login.html">Login here</a></p>
+
+
   <script>
     function handleRegister(event) {
       event.preventDefault();
@@ -40,7 +43,7 @@
       localStorage.setItem("password", password);
 
       alert("Registration successful!");
-      window.location.href = "login.html";
+      window.location.href = "Login.html";
     }
   </script>
 
